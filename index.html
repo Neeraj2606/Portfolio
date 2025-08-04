@@ -301,6 +301,98 @@
             box-shadow: 0 12px 40px rgba(30,144,255,0.18), 0 2px 16px rgba(30,144,255,0.07);
             z-index: 2;
         }
+        
+        /* Projects Carousel Styles */
+        .projects-carousel-container {
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .projects-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            align-items: center;
+        }
+        
+        .project-slide {
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-item {
+            transition: all 0.3s ease;
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+        
+        .project-item.center {
+            transform: scale(1.05);
+            opacity: 1;
+            box-shadow: 0 20px 60px rgba(30,144,255,0.25), 0 8px 32px rgba(30,144,255,0.15) !important;
+            border: 2px solid #1bbfa7;
+        }
+        
+        /* Project skills in single line */
+        .project-item .skills-interactive {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding-bottom: 0.25rem;
+        }
+        
+        .project-item .exp-skill-pill {
+            flex-shrink: 0;
+            white-space: nowrap;
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+        }
+        
+        .project-nav-btn {
+            z-index: 10;
+            opacity: 0.8;
+        }
+        
+        .project-nav-btn:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .project-dot {
+            cursor: pointer;
+        }
+        
+        .project-dot.active {
+            background-color: #1bbfa7 !important;
+        }
+        
+        body.dark-mode .project-nav-btn {
+            background: rgba(26, 30, 41, 0.8) !important;
+            color: #e6eaf3 !important;
+        }
+        
+        body.dark-mode .project-nav-btn:hover {
+            background: rgba(26, 30, 41, 1) !important;
+            color: #f3f6fa !important;
+        }
+        
+        body.dark-mode .project-dot {
+            background-color: #4a5568 !important;
+        }
+        
+        body.dark-mode .project-dot:hover {
+            background-color: #718096 !important;
+        }
+        
+        body.dark-mode .project-dot.active {
+            background-color: #4f8cff !important;
+        }
+        
+        body.dark-mode .project-item.center {
+            box-shadow: 0 20px 60px rgba(79,140,255,0.3), 0 8px 32px rgba(79,140,255,0.2) !important;
+            border: 2px solid #4f8cff;
+        }
         .section-title-divider {
             width: 80px;
             height: 5px;
@@ -535,40 +627,91 @@
         <div class="max-w-full px-4 xl:px-16">
             <h2 class="font-bold text-2xl mb-8 text-center">Projects</h2>
             <hr class="section-title-divider" />
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full">
-                <div class="project-card flex flex-col">
-                    <h3 class="text-xl font-bold mb-2">Clarity: AI-Powered Data Quality Platform</h3>
-                    <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
-                        <span class="exp-skill-pill">Python</span>
-                        <span class="exp-skill-pill">Streamlit</span>
-                        <span class="exp-skill-pill">Great Expectations</span>
-                        <span class="exp-skill-pill">Docker</span>
+            
+            <!-- Projects Carousel -->
+            <div class="projects-carousel-container relative">
+                <div class="projects-carousel flex transition-transform duration-500 ease-in-out">
+                    <!-- Project 1 -->
+                    <div class="project-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                        <div class="project-card flex flex-col h-full project-item" data-index="0">
+                            <h3 class="text-xl font-bold mb-2">Clarity: AI-Powered Data Quality Platform</h3>
+                            <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
+                                <span class="exp-skill-pill">Python</span>
+                                <span class="exp-skill-pill">Streamlit</span>
+                                <span class="exp-skill-pill">Great Expectations</span>
+                                <span class="exp-skill-pill">Docker</span>
+                            </div>
+                            <p class="text-slate-700 mb-2">Developed a full-stack data quality platform to automate data cleaning, profiling, and validation for enterprise datasets. Led the design and implementation of an AI-powered fuzzy duplicate detection system and integrated Great Expectations for robust validation. The platform reduced data cleaning time by 60% and improved data quality scores by 25% for client datasets, enabling teams to make faster, more reliable business decisions.</p>
+                            <a href="https://github.com/Neeraj2606/Clarity-Application" target="_blank" class="text-blue-600 hover:underline font-medium mt-auto">View on GitHub</a>
+                        </div>
                     </div>
-                    <p class="text-slate-700 mb-2">Developed a full-stack data quality platform to automate data cleaning, profiling, and validation for enterprise datasets. Led the design and implementation of an AI-powered fuzzy duplicate detection system and integrated Great Expectations for robust validation. The platform reduced data cleaning time by 60% and improved data quality scores by 25% for client datasets, enabling teams to make faster, more reliable business decisions.</p>
-                    <a href="https://github.com/Neeraj2606/Clarity-Application" target="_blank" class="text-blue-600 hover:underline font-medium mt-2 inline-block">View on GitHub</a>
-                </div>
-                <div class="project-card flex flex-col">
-                    <h3 class="text-xl font-bold mb-2">Fast Tweet Search Application</h3>
-                    <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
-                        <span class="exp-skill-pill">Python</span>
-                        <span class="exp-skill-pill">Couchbase</span>
-                        <span class="exp-skill-pill">PostgreSQL</span>
-                        <span class="exp-skill-pill">Streamlit</span>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                        <div class="project-card flex flex-col h-full project-item" data-index="1">
+                            <h3 class="text-xl font-bold mb-2">Fast Tweet Search Application</h3>
+                            <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
+                                <span class="exp-skill-pill">Python</span>
+                                <span class="exp-skill-pill">Couchbase</span>
+                                <span class="exp-skill-pill">PostgreSQL</span>
+                                <span class="exp-skill-pill">Streamlit</span>
+                            </div>
+                            <p class="text-slate-700 mb-2">Engineered a scalable system for processing and storing over 1 million tweets and 500,000 user records, utilizing Couchbase and PostgreSQL for efficient storage and Streamlit for an interactive search interface. Implemented advanced data retrieval techniques, reducing query latency by 70% and enabling real-time analytics for large-scale datasets, significantly improving user experience and data accessibility.</p>
+                            <a href="https://github.com/Neeraj2606/Tweet_Search" target="_blank" class="text-blue-600 hover:underline font-medium mt-auto">View on GitHub</a>
+                        </div>
                     </div>
-                    <p class="text-slate-700 mb-2">Engineered a scalable system for processing and storing over 1 million tweets and 500,000 user records, utilizing Couchbase and PostgreSQL for efficient storage and Streamlit for an interactive search interface. Implemented advanced data retrieval techniques, reducing query latency by 70% and enabling real-time analytics for large-scale datasets, significantly improving user experience and data accessibility.</p>
-                    <a href="https://github.com/Neeraj2606/Tweet_Search" target="_blank" class="text-blue-600 hover:underline font-medium mt-2 inline-block">View on GitHub</a>
-                </div>
-                <div class="project-card flex flex-col">
-                    <h3 class="text-xl font-bold mb-2">Causal Impact of Growth-Mindset</h3>
-                    <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
-                        <span class="exp-skill-pill">R</span>
-                        <span class="exp-skill-pill">Python</span>
-                        <span class="exp-skill-pill">Statistical Analysis</span>
-                        <span class="exp-skill-pill">Causal Inference</span>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                        <div class="project-card flex flex-col h-full project-item" data-index="2">
+                            <h3 class="text-xl font-bold mb-2">Causal Impact of Growth-Mindset</h3>
+                            <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
+                                <span class="exp-skill-pill">R</span>
+                                <span class="exp-skill-pill">Python</span>
+                                <span class="exp-skill-pill">Statistical Analysis</span>
+                                <span class="exp-skill-pill">Causal Inference</span>
+                            </div>
+                            <p class="text-slate-700 mb-2">Analyzed data for over 10,000 students to evaluate a growth-mindset intervention. Applied OLS regression and propensity score analysis to estimate causal effects on academic achievement, demonstrating a 0.41 standard deviation improvement. The project's results informed policy recommendations and were presented at an academic conference, showcasing the impact of data-driven evaluation in education.</p>
+                            <a href="https://github.com/Neeraj2606/causal-impact-growth-mindset" target="_blank" class="text-blue-600 hover:underline font-medium mt-auto">View on GitHub</a>
+                        </div>
                     </div>
-                    <p class="text-slate-700 mb-2">Analyzed data for over 10,000 students to evaluate a growth-mindset intervention. Applied OLS regression and propensity score analysis to estimate causal effects on academic achievement, demonstrating a 0.41 standard deviation improvement. The project’s results informed policy recommendations and were presented at an academic conference, showcasing the impact of data-driven evaluation in education.</p>
-                    <a href="https://github.com/Neeraj2606/causal-impact-growth-mindset" target="_blank" class="text-blue-600 hover:underline font-medium mt-2 inline-block">View on GitHub</a>
+                    
+                    <!-- Project 4 - DineSafe -->
+                    <div class="project-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                        <div class="project-card flex flex-col h-full project-item" data-index="3">
+                            <h3 class="text-xl font-bold mb-2">DineSafe: Public Health & Allergy Dining Advisor</h3>
+                            <div class="flex flex-wrap gap-2 mb-2 skills-interactive">
+                                <span class="exp-skill-pill">Python</span>
+                                <span class="exp-skill-pill">AWS</span>
+                                <span class="exp-skill-pill">Large Language Models (LLMs)</span>
+                                <span class="exp-skill-pill">Tableau</span>
+                                <span class="exp-skill-pill">ETL</span>
+                            </div>
+                            <p class="text-slate-700 mb-2">Engineered an end-to-end public health platform by orchestrating a data unification pipeline for millions of official NYC health inspection records and unstructured Yelp reviews, leveraging Python and AWS for high-performance ETL. Deployed the Gemini LLM to analyze over 1 million reviews, extracting critical safety information like allergen mentions and foodborne illness reports. The project culminated in an interactive Tableau dashboard that provides the public with a novel, AI-powered "Allergy Friendliness Score" to make safer, more informed dining choices.</p>
+                            <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium mt-auto">View on GitHub</a>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Navigation Dots -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="project-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors duration-200" data-slide="0"></button>
+                    <button class="project-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors duration-200" data-slide="1"></button>
+                    <button class="project-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors duration-200" data-slide="2"></button>
+                    <button class="project-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors duration-200" data-slide="3"></button>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="project-nav-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 hover:text-gray-900 p-2 rounded-full shadow-lg transition-all duration-200" id="prev-project">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button class="project-nav-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 hover:text-gray-900 p-2 rounded-full shadow-lg transition-all duration-200" id="next-project">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -878,6 +1021,92 @@
         btn.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
       };
     }
+  });
+  
+  // Projects Carousel Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.projects-carousel');
+    const slides = document.querySelectorAll('.project-slide');
+    const projectItems = document.querySelectorAll('.project-item');
+    const dots = document.querySelectorAll('.project-dot');
+    const prevBtn = document.getElementById('prev-project');
+    const nextBtn = document.getElementById('next-project');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    
+    // Initialize carousel
+    function initCarousel() {
+      if (!carousel) return;
+      
+      // Set initial position
+      updateCarousel();
+      
+      // Add event listeners
+      if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+      
+      // Add dot event listeners
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+      
+      // Auto-advance carousel every 6 seconds
+      setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 6000);
+    }
+    
+    function goToSlide(slideIndex) {
+      currentSlide = slideIndex;
+      
+      // Handle wrap-around
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      
+      updateCarousel();
+    }
+    
+    function updateCarousel() {
+      // Calculate slide width and offset for centering
+      let slideWidth, offset;
+      if (window.innerWidth >= 1024) {
+        // Desktop: show 3 projects, center the middle one
+        slideWidth = 33.333;
+        offset = 33.333; // Offset to center the first slide
+      } else if (window.innerWidth >= 768) {
+        // Tablet: show 2 projects, center the first one
+        slideWidth = 50;
+        offset = 25; // Offset to center the first slide
+      } else {
+        // Mobile: show 1 project, no offset needed
+        slideWidth = 100;
+        offset = 0;
+      }
+      
+      const translateX = -(currentSlide * slideWidth) + offset;
+      
+      carousel.style.transform = `translateX(${translateX}%)`;
+      
+      // Update project highlighting
+      projectItems.forEach((item, index) => {
+        item.classList.remove('center');
+        if (index === currentSlide) {
+          item.classList.add('center');
+        }
+      });
+      
+      // Update active dot
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+    
+    // Initialize on load
+    initCarousel();
+    
+    // Update on window resize
+    window.addEventListener('resize', updateCarousel);
   });
 </script>
 </body>
